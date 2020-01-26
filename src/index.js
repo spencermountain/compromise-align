@@ -1,11 +1,7 @@
 const compromiseAlign = function(Doc) {
   Doc.prototype.htmlAlign = function(str) {
-    let sentences = this.match(str)
-    let lines = sentences.map(m => {
-      return m.sentences()
-      // let after = m.lookAfter('.{3}')
-      // return m.concat(after)
-    })
+    let m = this.match(str)
+    let lines = m.fullSentences()
     console.log(lines.out('array'))
     // let segment = {}
     // segment[str] = 'Green'

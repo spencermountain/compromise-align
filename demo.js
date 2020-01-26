@@ -3,6 +3,7 @@ const vhtml = require('vhtml')
 let h = htm.bind(vhtml)
 
 const nlp = require('compromise')
+// const nlp = require('/Users/spencer/mountain/compromise')
 nlp.extend(require('./src'))
 // nlp.extend(require('compromise-align'))
 
