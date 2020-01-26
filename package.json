@@ -1,0 +1,61 @@
+{
+  "name": "compromise-align",
+  "description": "smart-replace plugin for nlp-compromise",
+  "version": "0.0.4",
+  "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
+  "main": "./builds/compromise-align.js",
+  "unpkg": "./builds/compromise-align.min.js",
+  "module": "./builds/compromise-align.mjs",
+  "types": "types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spencermountain/compromise-align.git"
+  },
+  "scripts": {
+    "test": "tape \"./tests/**/*.test.js\" | tap-dancer",
+    "testb": "TESTENV=prod tape \"./tests/**/*.test.js\" | tap-dancer",
+    "watch": "npm run watch:demo",
+    "build": "rollup -c --silent",
+    "watch:demo": "budo demo.js:assets/bundle.js --live",
+    "build:demo": "browserify demo.js -t [ babelify --presets [ @babel/preset-env ] ] | derequire > ./assets/bundle.js"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "files": [
+    "builds/",
+    "types/index.d.ts"
+  ],
+  "eslintIgnore": [
+    "builds/*.js"
+  ],
+  "peerDependencies": {
+    "compromise": "^12.*.*"
+  },
+  "dependencies": {
+    "htm": "3.0.1",
+    "vhtml": "2.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.6.3",
+    "@babel/preset-env": "7.6.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "budo": "^11.6.3",
+    "derequire": "^2.0.6",
+    "rollup": "1.29.1",
+    "@rollup/plugin-commonjs": "11.0.1",
+    "@rollup/plugin-json": "4.0.1",
+    "@rollup/plugin-node-resolve": "7.0.0",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-terser": "5.2.0",
+    "rollup-plugin-filesize-check": "0.0.1",
+    "tap-dancer": "0.2.0",
+    "tape": "4.13.0"
+  },
+  "license": "MIT"
+}
