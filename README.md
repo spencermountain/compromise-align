@@ -42,12 +42,7 @@ You can style it however you'd like.
 the method returns html-strings by default, but the library uses [Jason Miller's htm library](https://github.com/developit/htm) so you can return React Components, or anything:
 
 ```js
-doc.htmlAlign(
-  {},
-  {
-    bind: React.createElement,
-  }
-)
+doc.htmlAlign(matchStr, {bind: React.createElement})
 ```
 
 work-in-progress
