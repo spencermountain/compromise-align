@@ -19,6 +19,8 @@
   <code>npm install compromise-align</code>
 </div>
 
+![image](https://user-images.githubusercontent.com/399657/73189686-d2231800-40f2-11ea-94d7-2a49de46666f.png)
+
 ```js
 const nlp = require('compromise')
 nlp.extend(require('compromise-align'))
