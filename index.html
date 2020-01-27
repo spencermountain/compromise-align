@@ -6,17 +6,28 @@
     <title>•.</title>
     <link href="./assets/spencer.min.css" rel="stylesheet" />
     <meta name="author" content="Spencer Kelly, spencermountain@gmail.com" />
-    <style></style>
+    <style>
+      .matchText {
+        background-color: #6accb2;
+        color: white;
+        padding: 3px;
+        margin: 3px;
+        border-radius: 4px;
+      }
+    </style>
   </head>
 
   <body class="body">
-    <div class="center maxw10 w100p nowrap col">
+    <div class="center w100p nowrap col">
       <h2 class="grey mt6 mb4">
         <a href="https://github.com/spencermountain/spacetime-align">spacetime-align:</a>
       </h2>
 
-      <div class="col">
-        <textarea id="text" class="w8 h8 font f09 p1">
+      <div class="w10">
+        <input id="match" value="i #Verb" class="f2 grey font" style="padding:5px" />
+      </div>
+      <div id="result" class="w10"></div>
+      <textarea id="text" class="w9 h8 font f09 p1 mt3">
 Sometimes I feel I've got to
 Run away I've got to
 Get away from the pain that you drive into the heart of me
@@ -55,9 +66,8 @@ Tainted love, tainted love
 Touch me baby, tainted love
 Touch me baby, tainted love
 
-        </textarea>
-        <div id="result"></div>
-      </div>
+        </textarea
+      >
     </div>
     <div class="footer">
       <a href="http://twitter.com/spencermountain/">by @spencermountain</a>

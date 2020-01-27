@@ -1,15 +1,18 @@
-const htm = require('htm')
-const vhtml = require('vhtml')
-let h = htm.bind(vhtml)
-
 const nlp = require('compromise')
-// const nlp = require('/Users/spencer/mountain/compromise')
+// const nlp = require('/Users/spencer/mountain/compromise/src')
 nlp.extend(require('./src'))
-// nlp.extend(require('compromise-align'))
 
-let str = document.querySelector('#text').value
-let doc = nlp(str)
+const el = document.querySelector('#text')
 
-doc.htmlAlign('i #Verb')
+const doit = function(match) {
+  let doc = nlp(el.value)
+  let html = doc.htmlAlign(match)
+  document.querySelector('#result').innerHTML = html
+}
 
-document.querySelector('#result').innerHTML = h`<div>hi</div>`
+let m = document.querySelector('#match')
+m.onkeyup = function(e) {
+  doit(e.target.value)
+}
+
+doit(m.value)
