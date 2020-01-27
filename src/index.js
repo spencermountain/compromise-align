@@ -14,8 +14,6 @@ const styles = {
   margin-top:1.5rem;
   width:100%;
   `,
-  middle: `
-  `,
   side: `  
   overflow:hidden;
   white-space: nowrap;
@@ -24,15 +22,14 @@ const styles = {
 }
 
 const compromiseAlign = function(Doc) {
-  Doc.prototype.htmlAlign = function(str) {
+  Doc.prototype.htmlAlign = function(str, options) {
+    if (options && options.bind) {
+      h = htm.bind(options.bind)
+    }
     let m = this.match(str)
     let arr = m.map(d => {
-      let s = d.fullSentences()
-      // let three = s.splitOn(d)
       return [d.lookBehind('.*').text(), d.text(), d.lookAhead('.*').text()]
-      // return three.out('array')
     })
-    console.log(arr)
     let lines = arr
       .map(a => {
         return h`<div style=${styles.row}>
@@ -42,11 +39,7 @@ const compromiseAlign = function(Doc) {
       </div>`
       })
       .join(' ')
-    return `<div class="w100p ">${lines}</div>`
-    // console.log(lines.out('array'))
-    // let segment = {}
-    // segment[str] = 'Green'
-    // console.log(m.segment(segment))
+    return `<div>${lines}</div>`
   }
 }
 module.exports = compromiseAlign

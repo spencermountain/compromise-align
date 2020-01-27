@@ -23,11 +23,19 @@
 const nlp = require('compromise')
 nlp.extend(require('compromise-align'))
 
-let doc = nlp('')
-nlp().htmlAlign()
+let doc = nlp(myNovel)
+let html = doc.htmlAlign('the #Adjective of times')
+document.querySelector('#myId').innerHTML = html
 ```
 
 generate html output to line-up matches in a text, for easy viewing.
+
+### [Demo](http://spencermounta.in/compromise-align/)
+
+### Usage
+
+in terms of CSS styling, it does most of the layout, and tags the middle text as `.matchText`.
+You can style it however you'd like.
 
 the method returns html-strings by default, but the library uses [Jason Miller's htm library](https://github.com/developit/htm) so you can return React Components, or anything:
 

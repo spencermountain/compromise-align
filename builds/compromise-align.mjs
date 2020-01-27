@@ -1,4 +1,4 @@
-/* compromise-align 0.0.1 MIT */
+/* compromise-align 0.0.2 MIT */
 function _taggedTemplateLiteral(strings, raw) {
   if (!raw) {
     raw = strings.slice(0);
@@ -139,26 +139,23 @@ function _templateObject() {
 var h = htm.bind(vhtml);
 var styles = {
   row: "display: flex;\n  flex-direction: row;\n  justify-content: space-evenly;\n  align-items: center;\n  text-align: center;\n  flex-wrap: wrap;\n  align-self: stretch;\n  flex-wrap: nowrap;\n  margin-top:1.5rem;\n  width:100%;\n  ",
-  middle: "\n  ",
   side: "  \n  overflow:hidden;\n  white-space: nowrap;\n  flex: 1 1 0;\n  "
 };
 
 var compromiseAlign = function compromiseAlign(Doc) {
-  Doc.prototype.htmlAlign = function (str) {
+  Doc.prototype.htmlAlign = function (str, options) {
+    if (options && options.bind) {
+      h = htm.bind(options.bind);
+    }
+
     var m = this.match(str);
     var arr = m.map(function (d) {
-      var s = d.fullSentences(); // let three = s.splitOn(d)
-
-      return [d.lookBehind('.*').text(), d.text(), d.lookAhead('.*').text()]; // return three.out('array')
+      return [d.lookBehind('.*').text(), d.text(), d.lookAhead('.*').text()];
     });
-    console.log(arr);
     var lines = arr.map(function (a) {
       return h(_templateObject(), styles.row, styles.side + ' text-align:right;', a[0], a[1], styles.side + ' text-align:left;', a[2]);
     }).join(' ');
-    return "<div class=\"w100p \">".concat(lines, "</div>"); // console.log(lines.out('array'))
-    // let segment = {}
-    // segment[str] = 'Green'
-    // console.log(m.segment(segment))
+    return "<div>".concat(lines, "</div>");
   };
 };
 
